@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tree Visualizer</title>
+  </head>
+  <body>
+    <main>
+      <h1>Algorithm Visualizer</h1>
+      <nav class="nav">
+        <a href="/">Sorting</a>
+        <a href="/pathfinding.html">Pathfinding</a>
+        <a href="/tree.html" class="current">Trees</a>
+      </nav>
+
+      <div class="toolbar">
+        <select id="mode">
+          <option value="bst">Plain BST</option>
+          <option value="avl">AVL (self-balancing)</option>
+        </select>
+        <input id="key" type="number" placeholder="number" min="-999" max="999" />
+        <button id="insert">Insert</button>
+        <button id="delete">Delete</button>
+        <button id="search">Search</button>
+        <select id="order">
+          <option value="inorder">In-order</option>
+          <option value="preorder">Pre-order</option>
+          <option value="postorder">Post-order</option>
+          <option value="level">Level-order</option>
+        </select>
+        <button id="traverse">Traverse</button>
+        <span id="error"></span>
+      </div>
+
+      <div class="toolbar">
+        <button id="back">◀ Back</button>
+        <button id="play">Play</button>
+        <button id="step">Step ▶</button>
+        <button id="reset">Replay</button>
+        <button id="random">Random tree (10)</button>
+        <button id="sequence">Insert 1 to 10 in order</button>
+        <button id="clear">Clear</button>
+        <label>Speed <input id="speed" type="range" min="1" max="200" value="170" /></label>
+      </div>
+
+      <canvas id="canvas" width="900" height="450"></canvas>
+      <input id="scrub" class="scrub" type="range" min="0" max="0" value="0" />
+      <div id="explain"></div>
+      <div id="stats"></div>
+
+      <div class="legend">
+        <span><i style="background:#facc15"></i>Being compared</span>
+        <span><i style="background:#f97316"></i>Special node (successor / unbalanced)</span>
+        <span><i style="background:#22c55e"></i>Found / visited</span>
+        <span>bf = balance factor (left height - right height). AVL keeps it within -1 to +1.</span>
+      </div>
+    </main>
+    <script type="module" src="/src/tree/main.ts"></script>
+  </body>
+</html>

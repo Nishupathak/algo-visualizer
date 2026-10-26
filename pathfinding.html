@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pathfinding Visualizer</title>
+  </head>
+  <body>
+    <main>
+      <h1>Algorithm Visualizer</h1>
+      <nav class="nav">
+        <a href="/">Sorting</a>
+        <a href="/pathfinding.html" class="current">Pathfinding</a>
+        <a href="/tree.html">Trees</a>
+      </nav>
+
+      <div class="toolbar">
+        <select id="algo"></select>
+        <select id="tool">
+          <option value="wall">Draw walls</option>
+          <option value="weight">Draw mud (cost 5)</option>
+          <option value="erase">Erase</option>
+        </select>
+        <button id="back">◀ Back</button>
+        <button id="play">Play</button>
+        <button id="step">Step ▶</button>
+        <button id="reset">Reset</button>
+        <button id="random">Random walls</button>
+        <button id="clear">Clear board</button>
+        <button id="compare">Compare all</button>
+        <label>Speed <input id="speed" type="range" min="1" max="200" value="180" /></label>
+      </div>
+
+      <div id="info"></div>
+      <canvas id="canvas" width="900" height="450"></canvas>
+      <input id="scrub" class="scrub" type="range" min="0" max="0" value="0" />
+      <div id="explain">Draw on the grid. Drag the green and red cells to move them.</div>
+      <div id="stats"></div>
+
+      <div class="legend">
+        <span><i style="background:#22c55e"></i>Start</span>
+        <span><i style="background:#ef4444"></i>Goal</span>
+        <span><i style="background:#64748b"></i>Wall</span>
+        <span><i style="background:#92400e"></i>Mud (cost 5)</span>
+        <span><i style="background:#1d4ed8"></i>Discovered</span>
+        <span><i style="background:#0e7490"></i>Visited</span>
+        <span><i style="background:#facc15"></i>Path</span>
+      </div>
+
+      <div id="compare-result"></div>
+    </main>
+    <script type="module" src="/src/pathfinding/main.ts"></script>
+  </body>
+</html>
