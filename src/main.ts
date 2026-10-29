@@ -1,5 +1,6 @@
 import "./style.css";
 import { Timeline } from "./core/timeline";
+import { bindShortcuts } from "./core/shortcuts";
 import type { SortAlgorithm, SortStep } from "./core/types";
 import { sortAlgorithms } from "./algorithms";
 import { createCustomAlgorithm, STARTER_CODE, type CustomAlgorithm } from "./algorithms/custom";
@@ -22,6 +23,7 @@ const sizeInput = $<HTMLInputElement>("size");
 const scrub = $<HTMLInputElement>("scrub");
 const customInput = $<HTMLInputElement>("custom");
 const useBtn = $<HTMLButtonElement>("use-custom");
+const shareBtn = $<HTMLButtonElement>("share");
 const errorEl = $<HTMLSpanElement>("error");
 const statsEl = $<HTMLDivElement>("stats");
 const metaEl = $<HTMLDivElement>("meta");
@@ -37,7 +39,7 @@ const MAX_STEPS = 50000;
 const renderer = new SortRenderer(canvas);
 let data: number[] = [];
 let custom: CustomAlgorithm | null = null;
-let finishedSorted = true; // false when a custom algorithm leaves the array unsorted
+let finishedSorted = true;
 
 type Preset = "random" | "sorted" | "reversed" | "nearly" | "duplicates";
 
@@ -131,7 +133,17 @@ const timeline = new Timeline<SortStep>((pos, prev) => {
   if (!timeline.isPlaying) playBtn.textContent = "Play";
 });
 
+function syncUrl() {
+  if (algoSelect.selectedIndex >= sortAlgorithms.length) return;
+  const params = new URLSearchParams({
+    algo: String(algoSelect.selectedIndex),
+    data: data.join(","),
+  });
+  history.replaceState(null, "", "#" + params.toString());
+}
+
 function load() {
+  syncUrl();
   renderer.setData(data);
   showMeta();
   timeline.setSpeed(speedToDelay());
@@ -229,6 +241,15 @@ useBtn.addEventListener("click", () => {
   load();
 });
 
+shareBtn.addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(location.href);
+    errorEl.textContent = "Link copied.";
+  } catch {
+    errorEl.textContent = "Copy failed. Copy the address bar instead.";
+  }
+});
+
 runCustomBtn.addEventListener("click", () => {
   custom = createCustomAlgorithm(codeInput.value);
   if (algoSelect.options.length === sortAlgorithms.length) {
@@ -241,7 +262,21 @@ starterBtn.addEventListener("click", () => {
   codeInput.value = STARTER_CODE;
 });
 
+bindShortcuts({ play: playBtn, step: stepBtn, back: backBtn, reset: resetBtn });
+
 // --- init ---
 sortAlgorithms.forEach((a) => algoSelect.add(new Option(a.meta.name)));
 codeInput.value = STARTER_CODE;
-newArray();
+
+const hashParams = new URLSearchParams(location.hash.slice(1));
+const sharedData = parseCustom(hashParams.get("data") ?? "");
+const sharedAlgo = Number(hashParams.get("algo"));
+if (typeof sharedData !== "string") {
+  data = sharedData;
+  if (Number.isInteger(sharedAlgo) && sharedAlgo >= 0 && sharedAlgo < sortAlgorithms.length) {
+    algoSelect.selectedIndex = sharedAlgo;
+  }
+  load();
+} else {
+  newArray();
+}

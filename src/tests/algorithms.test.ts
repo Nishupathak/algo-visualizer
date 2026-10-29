@@ -1,7 +1,9 @@
 import { describe, it, expect } from "vitest";
 import { sortAlgorithms } from "../algorithms";
 
-function replay(run: Iterable<{ type: string; indices?: [number, number]; index?: number; value?: number }>, input: number[]) {
+type AnyStep = { type: string; indices?: [number, number]; index?: number; value?: number };
+
+function replay(run: Iterable<AnyStep>, input: number[]) {
   const arr = [...input];
   for (const s of run) {
     if (s.type === "swap" && s.indices) {
@@ -14,7 +16,7 @@ function replay(run: Iterable<{ type: string; indices?: [number, number]; index?
   return arr;
 }
 
-const inputs = [
+const inputs: number[][] = [
   [],
   [1],
   [2, 1],
@@ -27,7 +29,7 @@ const inputs = [
 ];
 
 describe.each(sortAlgorithms)("$meta.name", (algo) => {
-  it.each(inputs)("sorts %j", (...input: number[]) => {
+  it.each(inputs.map((x) => [x]))("sorts %j", (input) => {
     const expected = [...input].sort((a, b) => a - b);
     expect(replay(algo.run(input), input)).toEqual(expected);
   });

@@ -1,5 +1,6 @@
 import "../style.css";
 import { Timeline } from "../core/timeline";
+import { bindShortcuts } from "../core/shortcuts";
 import { Tree } from "./tree";
 import { TreeRenderer, countNodes, treeHeight } from "./renderer";
 import { cloneTree, type Order, type TNode, type TreeStep } from "./types";
@@ -29,7 +30,7 @@ const statsEl = $<HTMLDivElement>("stats");
 
 const renderer = new TreeRenderer(canvas);
 let tree = new Tree(false);
-let before: TNode | null = null; // what the tree looked like before the last operation
+let before: TNode | null = null;
 let hint = "Type a number and click Insert.";
 
 const speedToDelay = () => 201 - Number(speedInput.value);
@@ -51,7 +52,7 @@ const timeline = new Timeline<TreeStep>((pos) => {
 });
 
 function run(gen: Generator<TreeStep, void, undefined>) {
-  before = cloneTree(tree.root); // taken before the generator starts mutating the tree
+  before = cloneTree(tree.root);
   const steps = [...gen];
   timeline.setSpeed(speedToDelay());
   timeline.load(steps);
@@ -155,5 +156,7 @@ scrub.addEventListener("input", () => {
   timeline.seek(Number(scrub.value));
 });
 speedInput.addEventListener("input", () => timeline.setSpeed(speedToDelay()));
+
+bindShortcuts({ play: playBtn, step: stepBtn, back: backBtn, reset: resetBtn });
 
 startFresh(false);

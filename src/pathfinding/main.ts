@@ -1,5 +1,6 @@
 import "../style.css";
 import { Timeline } from "../core/timeline";
+import { bindShortcuts } from "../core/shortcuts";
 import { pathAlgorithms, pathCost } from "./algorithms";
 import { GridRenderer } from "./renderer";
 import { WALL, WEIGHT, type Cell, type Grid, type GridStep, type PathStep } from "./types";
@@ -185,6 +186,8 @@ randomBtn.addEventListener("click", () => {
   }
   rebuild();
 });
+
+bindShortcuts({ play: playBtn, step: stepBtn, back: backBtn, reset: resetBtn });
 
 // --- init ---
 pathAlgorithms.forEach((a) => algoSelect.add(new Option(a.name)));

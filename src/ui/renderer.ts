@@ -1,4 +1,5 @@
 import type { SortStep } from "../core/types";
+import { prepare } from "../core/canvas";
 
 type BarState = "default" | "compare" | "swap" | "sorted";
 
@@ -14,7 +15,7 @@ export class SortRenderer {
   private arr: number[] = [];
   private states: BarState[] = [];
   comparisons = 0;
-  swaps = 0; // swaps and overwrites (writes)
+  swaps = 0;
 
   constructor(private canvas: HTMLCanvasElement) {}
 
@@ -81,8 +82,7 @@ export class SortRenderer {
   }
 
   private draw() {
-    const ctx = this.canvas.getContext("2d")!;
-    const { width, height } = this.canvas;
+    const { ctx, width, height } = prepare(this.canvas);
     ctx.clearRect(0, 0, width, height);
 
     const n = this.arr.length;

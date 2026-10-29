@@ -1,4 +1,5 @@
 import { WALL, type Cell, type Grid, type GridStep } from "./types";
+import { prepare } from "../core/canvas";
 
 const COLORS = {
   empty: "#0f172a",
@@ -16,9 +17,9 @@ export class GridRenderer {
   constructor(private canvas: HTMLCanvasElement) {}
 
   draw(grid: Grid, start: Cell, end: Cell, steps: GridStep[]) {
-    const ctx = this.canvas.getContext("2d")!;
-    const size = this.canvas.width / grid.cols;
-    const state = new Uint8Array(grid.rows * grid.cols); // 0 none, 1 open, 2 visited, 3 path
+    const { ctx, width, height } = prepare(this.canvas);
+    const size = width / grid.cols;
+    const state = new Uint8Array(grid.rows * grid.cols);
     let current = -1;
 
     for (const s of steps) {
@@ -35,7 +36,7 @@ export class GridRenderer {
     }
 
     ctx.fillStyle = "#020617";
-    ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    ctx.fillRect(0, 0, width, height);
 
     for (let r = 0; r < grid.rows; r++) {
       for (let c = 0; c < grid.cols; c++) {

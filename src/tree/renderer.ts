@@ -1,4 +1,5 @@
 import type { TNode, TreeStep } from "./types";
+import { prepare } from "../core/canvas";
 
 export const treeHeight = (n: TNode | null): number =>
   n ? 1 + Math.max(treeHeight(n.left), treeHeight(n.right)) : 0;
@@ -18,8 +19,7 @@ export class TreeRenderer {
   constructor(private canvas: HTMLCanvasElement) {}
 
   draw(root: TNode | null, step: TreeStep | null, showBalance: boolean) {
-    const ctx = this.canvas.getContext("2d")!;
-    const { width, height } = this.canvas;
+    const { ctx, width, height } = prepare(this.canvas);
     ctx.clearRect(0, 0, width, height);
     ctx.textAlign = "center";
 
@@ -35,7 +35,6 @@ export class TreeRenderer {
     const levelH = depth > 1 ? Math.min(80, (height - 90) / (depth - 1)) : 0;
     const radius = Math.max(9, Math.min(20, width / count / 2 - 2));
 
-    // in-order index gives x, depth gives y
     const pos = new Map<number, { x: number; y: number; node: TNode }>();
     let idx = 0;
     const place = (n: TNode | null, d: number) => {
