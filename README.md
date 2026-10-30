@@ -26,7 +26,7 @@ Most visualizers play an animation and that's it. This one is built for understa
 ## Screenshots
 
 ### Sorting
-![Sorting](<img width="1183" height="671" alt="6278229137570862007" src="https://github.com/user-attachments/assets/31c2d264-faeb-4127-a39f-4b946242b62d" />)
+![Sorting] <img width="1183" height="671" alt="6278229137570862007" src="https://github.com/user-attachments/assets/31c2d264-faeb-4127-a39f-4b946242b62d" />
 
 Six algorithms with a live code panel, step explanations, comparison and swap counters, and a "Compare all" table that runs every algorithm on the same array.
 
