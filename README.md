@@ -4,7 +4,7 @@
 
 **Algorithms you can rewind, break and race.**
 
-Sorting, pathfinding and self-balancing trees, built from scratch in strict TypeScript with no UI framework.
+Sorting, pathfinding and self-balancing trees, built from scratch in TypeScript with no UI framework.
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-build-646cff?logo=vite&logoColor=white)
