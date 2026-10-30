@@ -26,17 +26,17 @@ Most visualizers play an animation and that's it. This one is built for understa
 ## Screenshots
 
 ### Sorting
-![Sorting] <img width="1183" height="671" alt="6278229137570862007" src="https://github.com/user-attachments/assets/31c2d264-faeb-4127-a39f-4b946242b62d" />
+[Sorting] <img width="1183" height="671" alt="6278229137570862007" src="https://github.com/user-attachments/assets/31c2d264-faeb-4127-a39f-4b946242b62d" />
 
 Six algorithms with a live code panel, step explanations, comparison and swap counters, and a "Compare all" table that runs every algorithm on the same array.
 
 ### Pathfinding
-![Pathfinding](<img width="1114" height="669" alt="6278229137570862009" src="https://github.com/user-attachments/assets/eecf2176-a680-457b-8cba-5f2c18c6ae4b" />)
+[Pathfinding] <img width="1114" height="669" alt="6278229137570862009" src="https://github.com/user-attachments/assets/eecf2176-a680-457b-8cba-5f2c18c6ae4b" />
 
 Draw walls and weighted "mud" cells, drag the start and goal, and watch BFS, DFS, Dijkstra and A* explore the same board.
 
 ### Trees
-![Trees](<img width="1106" height="664" alt="6278229137570862010" src="https://github.com/user-attachments/assets/b076fe16-4426-4661-b95b-fc1153b879c2" />)
+[Trees] <img width="1106" height="664" alt="6278229137570862010" src="https://github.com/user-attachments/assets/b076fe16-4426-4661-b95b-fc1153b879c2" />
 
 BST and AVL trees with balance factors on every node and step-by-step rotations.
 
