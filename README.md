@@ -6,11 +6,9 @@
 
 Sorting, pathfinding and self-balancing trees, built from scratch in strict TypeScript with no UI framework.
 
-[![CI](https://github.com/Nishupathak/algo-visualizer/actions/workflows/ci.yml/badge.svg)](https://github.com/Nishupathak/algo-visualizer/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-build-646cff?logo=vite&logoColor=white)
 
-**[Live demo](https://nishupathak.github.io/algo-visualizer/)**
 
 </div>
 
@@ -28,17 +26,17 @@ Most visualizers play an animation and that's it. This one is built for understa
 ## Screenshots
 
 ### Sorting
-![Sorting](docs/sorting.png)
+![Sorting](<img width="1183" height="671" alt="6278229137570862007" src="https://github.com/user-attachments/assets/31c2d264-faeb-4127-a39f-4b946242b62d" />)
 
 Six algorithms with a live code panel, step explanations, comparison and swap counters, and a "Compare all" table that runs every algorithm on the same array.
 
 ### Pathfinding
-![Pathfinding](docs/pathfinding.png)
+![Pathfinding](<img width="1114" height="669" alt="6278229137570862009" src="https://github.com/user-attachments/assets/eecf2176-a680-457b-8cba-5f2c18c6ae4b" />)
 
 Draw walls and weighted "mud" cells, drag the start and goal, and watch BFS, DFS, Dijkstra and A* explore the same board.
 
 ### Trees
-![Trees](docs/trees.png)
+![Trees](<img width="1106" height="664" alt="6278229137570862010" src="https://github.com/user-attachments/assets/b076fe16-4426-4661-b95b-fc1153b879c2" />)
 
 BST and AVL trees with balance factors on every node and step-by-step rotations.
 
@@ -147,12 +145,4 @@ npm run build    # type-check and build for production
 
 ## Tech
 
-TypeScript (strict), Vite, Vitest, HTML Canvas, GitHub Actions, GitHub Pages.
-
----
-
-<div align="center">
-
-Built by [Nishu Pathak](https://github.com/Nishupathak)
-
-</div>
+TypeScript, Vite, Vitest, HTML Canvas, GitHub Actions, GitHub Pages.
